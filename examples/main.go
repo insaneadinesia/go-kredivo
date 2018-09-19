@@ -22,6 +22,7 @@ func setup() {
 }
 
 func main() {
+	setup()
 	itemDetails := []kredivo.Item{
 		kredivo.Item{
 			ID:       "1111111",
