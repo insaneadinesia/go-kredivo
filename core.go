@@ -70,6 +70,26 @@ func (gateway *CoreGateway) ConfirmPurchase(req *ConfirmPurchaseRequest) (Confir
 	return resp, nil
 }
 
+func (gateway *CoreGateway) CancelPurchase(req *CancelPurchaseRequest) (CancelPurchaseResponse, error) {
+	req.ServerKey = gateway.Client.ServerKey
+
+	path := gateway.Client.APIEnvType.String() + "/cancel_transaction"
+	resp := CancelPurchaseResponse{}
+	jsonReq, _ := json.Marshal(req)
+
+	err := gateway.Client.Call("POST", path, bytes.NewBuffer(jsonReq), &resp)
+	if err != nil {
+		fmt.Println("Error Cancel Purchase : ", err)
+		return resp, err
+	}
+
+	if resp.Status != "OK" {
+		return resp, errors.New(resp.Error.Message)
+	}
+
+	return resp, nil
+}
+
 func (gateway *CoreGateway) CheckTransactionStatus(req *TransactionStatusRequest) (TransactionStatusResponse, error) {
 	req.ServerKey = gateway.Client.ServerKey
 

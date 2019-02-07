@@ -38,6 +38,15 @@ type ConfirmPurchaseRequest struct {
 	SignatureKey  string `json:"signature_key"`
 }
 
+type CancelPurchaseRequest struct {
+	ServerKey          string `json:"server_key"`
+	OrderID            string `json:"order_id"`
+	TransactionID      string `json:"transaction_id"`
+	CancellationReason string `json:"cancellation_reason"`
+	CancelledBy        string `json:"cancelled_by"`
+	CancelledDate      string `json:"cancellation_date"`
+}
+
 type TransactionStatusRequest struct {
 	ServerKey string `json:"server_key"`
 	OrderID   string `json:"order_id"`

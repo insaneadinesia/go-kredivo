@@ -31,6 +31,19 @@ type ConfirmPurchaseResponse struct {
 	TransactionID     string `json:"transaction_id"`
 }
 
+type CancelPurchaseResponse struct {
+	Status            string                       `json:"status"`
+	FraudStatus       string                       `json:"fraud_status"`
+	OrderID           string                       `json:"order_id"`
+	TransactionTime   string                       `json:"transaction_time"`
+	Amount            string                       `json:"amount"`
+	PaymentType       string                       `json:"payment_type"`
+	TransactionStatus string                       `json:"transaction_status"`
+	Message           string                       `json:"message"`
+	TransactionID     string                       `json:"transaction_id"`
+	Error             *CancelPurchaseErrorResponse `json:"error,omitempty"`
+}
+
 type TransactionStatusResponse struct {
 	Status            string `json:"status"`
 	LegalName         string `json:"legal_name"`
@@ -46,6 +59,11 @@ type TransactionStatusResponse struct {
 }
 
 type CheckoutErrorResponse struct {
+	Message string `json:"message"`
+	Kind    string `json:"kind"`
+}
+
+type CancelPurchaseErrorResponse struct {
 	Message string `json:"message"`
 	Kind    string `json:"kind"`
 }
