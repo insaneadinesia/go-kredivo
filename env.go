@@ -14,7 +14,7 @@ const (
 
 var typeString = map[Env]string{
 	Sandbox:    "https://sandbox.kredivo.com/kredivo/v2",
-	Production: "https://kredivo.com/kredivo/v2",
+	Production: "https://api.kredivo.com/kredivo/v2",
 }
 
 // implement stringer
